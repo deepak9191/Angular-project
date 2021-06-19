@@ -1,0 +1,62 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <div class="custom-wrapper-example" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+          <input matInput class="form-control mr-sm-2 text-center" type="search" placeholder="Search"
+            aria-label="Search" [formControl]="nameControl" [matAutocomplete]="auto"
+            [matAutocompleteConnectedTo]="origin">
+        </div>
+
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)='onSelect("name")'>
+          <mat-option *ngFor="let name of filteredNames | async" [value]="name">{{name}}</mat-option>
+        </mat-autocomplete>
+
+      </th>
+      <th>
+        <div class="custom-wrapper-example" matAutocompleteOrigin #origin1="matAutocompleteOrigin">
+          <input matInput class="form-control mr-sm-2 text-center" type="search" placeholder="Search"
+            aria-label="Search" [formControl]="addressControl" [matAutocomplete]="auto1"
+            [matAutocompleteConnectedTo]="origin1">
+        </div>
+
+        <mat-autocomplete #auto1="matAutocomplete" (optionSelected)='onSelect("address")'>
+          <mat-option *ngFor="let address of filteredAddress | async" [value]="address">{{address}}</mat-option>
+        </mat-autocomplete>
+      </th>
+      <th>
+        <div class="custom-wrapper-example" matAutocompleteOrigin #origin2="matAutocompleteOrigin">
+          <input matInput class="form-control mr-sm-2 text-center" type="search" placeholder="Search"
+            aria-label="Search" [formControl]="companyControl" [matAutocomplete]="auto2"
+            [matAutocompleteConnectedTo]="origin2">
+        </div>
+
+        <mat-autocomplete #auto2="matAutocomplete" (optionSelected)='onSelect("company")'>
+          <mat-option *ngFor="let company of filteredCompany | async" [value]="company">{{company}}</mat-option>
+        </mat-autocomplete>
+      </th>
+    </tr>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Company</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employeeList; index as i">
+      <td>{{ employee.name }}</td>
+      <td>{{employee.address.street}},{{employee.address.suite}},{{employee.address.city}},{{employee.address.zipcode}}
+      </td>
+      <td>{{employee.company.name}}</td>
+      <td>
+        <button *ngIf="!isDeleted" type="button" class="btn btn-secondary btn-sm mr-2 px-3"
+          (click)="onEdit(employee)">Edit</button>
+        <button *ngIf="!isDeleted" type="button" class="btn btn-secondary btn-sm ml-2"
+          (click)="onDelete(employee,i)">Delete</button>
+        <button *ngIf="isDeleted" type="button" class="btn btn-secondary btn-sm ml-2"
+          (click)="onRestore(employee)">Restore</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

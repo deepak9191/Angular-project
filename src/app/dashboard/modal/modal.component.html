@@ -1,0 +1,30 @@
+<form class="p-2" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="text-center pb-3">Add New Employee</div>
+  <div class="form-group">
+    <input type="text" formControlName="name" [value]="employeeForm.value.name" class="form-control" id="name"
+      placeholder="Name">
+  </div>
+  <div class="form-group">
+    <input type="text" formControlName="company" class="form-control" id="Company" placeholder="Company">
+  </div>
+  <h5>Address</h5>
+  <div formGroupName="address">
+    <div class="form-group">
+      <input type="text" formControlName="city" value="employeeForm.value.address.city" class="form-control" id="city"
+        placeholder="City">
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="street" class="form-control" id="street" placeholder="Street">
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="suite" class="form-control" id="suite" placeholder="Suite">
+    </div>
+    <div class="form-group">
+      <input type="text" formControlName="zipcode" class="form-control" id="zipecode" placeholder="Zipcode">
+    </div>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary">Submit</button>
+  </div>
+
+</form>

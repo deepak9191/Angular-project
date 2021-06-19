@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="pt-3 pb-0"><strong>Home</strong></div>
+    <hr class="mt-0">
+    <div class="row">
+        <h4 class="p-2 pr-5 col-7 text-right">Employee List</h4>
+        <div class="col-5 text-right"><button type="button" class="btn btn-secondary btn-sm px-3"
+                (click)="onAddEmployee()"> Add</button></div>
+    </div>
+    <app-empployee-list [employeeList]="employeeList" [isDeleted]="false" (deleteClick)="onDeleteClick($event)"
+        (editClick)="onEditClick($event)"></app-empployee-list>
+
+    <h4 class="text-center p-2">Deleted Employee List</h4>
+    <app-empployee-list [employeeList]="deletedList" [isDeleted]="true" (restoreClick)="onRestoreClick($event)">
+    </app-empployee-list>
+</div>

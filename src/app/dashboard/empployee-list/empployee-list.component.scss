@@ -1,0 +1,13 @@
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+th, td {
+    padding: .4rem;
+}
+td {
+    font-size: .875rem;
+}
+.search th  {
+    border: 0 !important;
+}
